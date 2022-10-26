@@ -3,10 +3,10 @@ from flask import Flask
 from flask import render_template
 from flask import abort
 
-#Create Flask App
+# Create Flask App
 app = Flask(__name__)
 
-#Access CSV File
+# Access CSV File
 def get_csv():
     csv_path = './static/la-riots-deaths.csv'
     csv_file = open(csv_path,'rb')
@@ -15,7 +15,7 @@ def get_csv():
     return csv_list
     
 
-#Route index page
+# Route index page
 @app.route('/')
 def index():
     template = 'index.html'
@@ -24,7 +24,7 @@ def index():
     return render_template(template, object_list = object_list)
     abort(404)
 
-#Deatil page for each report
+# Deatil page for each report
 @app.route('/<row_id>/')
 def detail(row_id):
     template = 'detail.html'
@@ -36,7 +36,7 @@ def detail(row_id):
             
 
 
-#configure flask server
+# configure flask server
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
 
